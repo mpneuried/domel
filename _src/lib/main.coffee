@@ -246,10 +246,9 @@ domHelper.emit = ( el, type )->
 	return evt
 
 # Export the module
-if typeof exports isnt 'undefined'
-	if typeof module isnt 'undefined' and module.exports
-		exports = module.exports = domHelper
-		return
+if typeof module isnt 'undefined' and module.exports
+	exports = module.exports = domHelper
+else if typeof exports isnt 'undefined'
 	exports.domHelper = domHelper
 else if typeof define is 'function' and typeof define.amd is 'object' and define.amd
 	define ->

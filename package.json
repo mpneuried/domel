@@ -1,6 +1,6 @@
 {
   "name": "domel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple dom helper if you want to get rid of jQuery",
   "keywords": [ "dom", "browser", "helper", "jquery", "selector", "traversing" ],
   "homepage": "https://github.com/mpneuried/domel",

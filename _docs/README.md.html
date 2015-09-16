@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "", thisFile = "README.md", defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#domel">domel</a>
+      </div>
+      <div class="heading h2">
+        <a href="#install">Install</a>
+      </div>
+      <div class="heading h2">
+        <a href="#initialize">Initialize</a>
+      </div>
+      <div class="heading h2">
+        <a href="#methods">Methods</a>
+      </div>
+      <div class="heading h3">
+        <a href="#selector%20%2F%20find">selector / find</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#byclass">byClass</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#byid">byId</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#data">data</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#last">last</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#first">first</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parent">parent</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#children">children</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#countchildren">countChildren</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#is">is</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#hasclass">hasClass</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#addclass">addClass</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#removeclass">removeClass</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#hide">hide</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#show">show</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#hasid">hasId</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#append">append</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#prepend">prepend</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#remove">remove</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#on">on</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#off">off</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h3">
+        <a href="#emit">emit</a>
+      </div>
+      <div class="heading h4">
+        <a href="#examples%3A">Examples:</a>
+      </div>
+      <div class="heading h2">
+        <a href="#todo">TODO</a>
+      </div>
+      <div class="heading h2">
+        <a href="#release%20history">Release History</a>
+      </div>
+      <div class="heading h2">
+        <a href="#the%20mit%20license%20(mit)">The MIT License (MIT)</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><div class="docs markdown">
+<div class="pilwrap" id="domel">
+  <h1>
+    <a href="#domel" name="domel" class="pilcrow">&#182;</a>
+    domel
+  </h1>
+</div>
+
+
+<p><a href="http://travis-ci.org/mpneuried/domel"><img src="https://secure.travis-ci.org/mpneuried/domel.png?branch=master" alt="Build Status" title="" /></a>
+<a href="https://david-dm.org/mpneuried/domel"><img src="https://david-dm.org/mpneuried/domel.png" alt="Build Status" title="" /></a>
+<a href="http://badge.fury.io/js/domel"><img src="https://badge.fury.io/js/domel.png" alt="NPM version" title="" /></a></p>
+
+<p>A simple dom helper if you want to get rid of jQuery.</p>
+
+<p><a href="https://nodei.co/npm/domel/"><img src="https://nodei.co/npm/domel.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
+
+<p>You can use it with the commonjs or amd pattern otherwise it will just inject to <code>window.domHelper</code></p>
+
+
+<div class="pilwrap" id="install">
+  <h2>
+    <a href="#install" name="install" class="pilcrow">&#182;</a>
+    Install
+  </h2>
+</div>
+
+
+<div class='highlight'><pre><code language=''>  npm install domel
+</code></pre></div>
+
+
+<div class="pilwrap" id="initialize">
+  <h2>
+    <a href="#initialize" name="initialize" class="pilcrow">&#182;</a>
+    Initialize
+  </h2>
+</div>
+
+
+<div class='highlight'><pre><code language=''>var domel = require( "domel" );
+
+// general selector
+domel( ".myid .subclass" ); // a list of matching elements 
+
+// get by class
+domel.byClass( "my-class" ); // a list of elements 
+
+// get by id
+var myEl = domel.byId( "my-id" ); // a single element
+myEl.d.addClass( "foo" ).d.show()
+</code></pre></div>
+
+
+<div class="pilwrap" id="methods">
+  <h2>
+    <a href="#methods" name="methods" class="pilcrow">&#182;</a>
+    Methods
+  </h2>
+</div>
+
+
+<p>This module will add a <code>d</code> property to every retuned dom element.
+So you can use at least every <strong>domel</strong> function without adding the element <code>el.d.{function}()</code></p>
+
+
+<div class="pilwrap" id="selector%20%2F%20find">
+  <h3>
+    <a href="#selector%20%2F%20find" name="selector%20%2F%20find" class="pilcrow">&#182;</a>
+    selector / <code>find</code>
+  </h3>
+</div>
+
+
+<p>Use a selector to find dom elements</p>
+
+<p><strong>Returns:</strong> <em>(Element|HTMLCollection)</em> Returns all matching elements or an array of elements.
+If <code>onlyFirst</code> is <code>true</code> only the fist element will be returned.</p>
+
+
+<div class="pilwrap" id="examples%3A">
+  <h4>
+    <a href="#examples%3A" name="examples%3A" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel( selector [, context = document][, onlyFirst = false] )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.find( selector[, onlyFirst = false] )</code></p>
+
+
+<div class="pilwrap" id="byclass">
+  <h3>
+    <a href="#byclass" name="byclass" class="pilcrow">&#182;</a>
+    <code>byClass</code>
+  </h3>
+</div>
+
+
+<p>get sub elements by class. If no <code>context</code> is defined <code>document</code> will be used. </p>
+
+<p><strong>Returns:</strong> <em>(Element|HTMLCollection)</em> Returns all matching elements or an array of elements.
+If <code>onlyFirst</code> is <code>true</code> only the fist element will be returned.</p>
+
+
+<div class="pilwrap" id="examples%3A_1">
+  <h4>
+    <a href="#examples%3A_1" name="examples%3A_1" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.byClass( _cl [, context = document][, onlyFirst = false] )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.byClass( _cl[, onlyFirst = false] )</code></p>
+
+
+<div class="pilwrap" id="byid">
+  <h3>
+    <a href="#byid" name="byid" class="pilcrow">&#182;</a>
+    <code>byId</code>
+  </h3>
+</div>
+
+
+<p>get an element by id</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the matching element</p>
+
+
+<div class="pilwrap" id="examples%3A_2">
+  <h4>
+    <a href="#examples%3A_2" name="examples%3A_2" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.byId( _id [, context = document] )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.byId( _id )</code></p>
+
+
+<div class="pilwrap" id="data">
+  <h3>
+    <a href="#data" name="data" class="pilcrow">&#182;</a>
+    <code>data</code>
+  </h3>
+</div>
+
+
+<p>get the data attributes of an element</p>
+
+<p><strong>Returns:</strong> <em>(Strin|Object)</em> Returns elements data as object of the value if a <code>key</code> was defined.</p>
+
+
+<div class="pilwrap" id="examples%3A_3">
+  <h4>
+    <a href="#examples%3A_3" name="examples%3A_3" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.data( el, key )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.data( key )</code></p>
+
+
+<div class="pilwrap" id="last">
+  <h3>
+    <a href="#last" name="last" class="pilcrow">&#182;</a>
+    <code>last</code>
+  </h3>
+</div>
+
+
+<p>the last element matching the selector</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the matching element</p>
+
+
+<div class="pilwrap" id="examples%3A_4">
+  <h4>
+    <a href="#examples%3A_4" name="examples%3A_4" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.last( el, selector )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.last( selector )</code></p>
+
+
+<div class="pilwrap" id="first">
+  <h3>
+    <a href="#first" name="first" class="pilcrow">&#182;</a>
+    <code>first</code>
+  </h3>
+</div>
+
+
+<p>the first element matching the selector</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the matching element</p>
+
+
+<div class="pilwrap" id="examples%3A_5">
+  <h4>
+    <a href="#examples%3A_5" name="examples%3A_5" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.first( el, selector )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.first( selector )</code></p>
+
+
+<div class="pilwrap" id="parent">
+  <h3>
+    <a href="#parent" name="parent" class="pilcrow">&#182;</a>
+    <code>parent</code>
+  </h3>
+</div>
+
+
+<p>the parent element or a parent up on the tree if a selector was set</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the parent element</p>
+
+
+<div class="pilwrap" id="examples%3A_6">
+  <h4>
+    <a href="#examples%3A_6" name="examples%3A_6" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.parent( el [, selector] )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.parent( selector )</code></p>
+
+
+<div class="pilwrap" id="children">
+  <h3>
+    <a href="#children" name="children" class="pilcrow">&#182;</a>
+    <code>children</code>
+  </h3>
+</div>
+
+
+<p>all direct children or all direct children matching the selector</p>
+
+<p><strong>Returns:</strong> <em>(HTMLCollection)</em> Returns all matching elements</p>
+
+
+<div class="pilwrap" id="examples%3A_7">
+  <h4>
+    <a href="#examples%3A_7" name="examples%3A_7" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.children( el, selector )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.children( selector )</code></p>
+
+
+<div class="pilwrap" id="countchildren">
+  <h3>
+    <a href="#countchildren" name="countchildren" class="pilcrow">&#182;</a>
+    <code>countChildren</code>
+  </h3>
+</div>
+
+
+<p>all direct children or all direct children matching the selector</p>
+
+<p><strong>Returns:</strong> <em>(Number)</em> Returns the number of children</p>
+
+
+<div class="pilwrap" id="examples%3A_8">
+  <h4>
+    <a href="#examples%3A_8" name="examples%3A_8" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.countChildren( el, selector )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.countChildren( selector )</code></p>
+
+
+<div class="pilwrap" id="is">
+  <h3>
+    <a href="#is" name="is" class="pilcrow">&#182;</a>
+    <code>is</code>
+  </h3>
+</div>
+
+
+<p>test the element against a selector</p>
+
+<p><strong>Returns:</strong> <em>(Boolean)</em> This element matches the selector</p>
+
+
+<div class="pilwrap" id="examples%3A_9">
+  <h4>
+    <a href="#examples%3A_9" name="examples%3A_9" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.is( el, selector )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.is( selector )</code></p>
+
+
+<div class="pilwrap" id="hasclass">
+  <h3>
+    <a href="#hasclass" name="hasclass" class="pilcrow">&#182;</a>
+    <code>hasClass</code>
+  </h3>
+</div>
+
+
+<p>check if the element has the given css class</p>
+
+<p><strong>Returns:</strong> <em>(Boolean)</em> This element has the class</p>
+
+
+<div class="pilwrap" id="examples%3A_10">
+  <h4>
+    <a href="#examples%3A_10" name="examples%3A_10" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.hasClass( el, classname )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.hasClass( classname )</code></p>
+
+
+<div class="pilwrap" id="addclass">
+  <h3>
+    <a href="#addclass" name="addclass" class="pilcrow">&#182;</a>
+    <code>addClass</code>
+  </h3>
+</div>
+
+
+<p>add a css class</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_11">
+  <h4>
+    <a href="#examples%3A_11" name="examples%3A_11" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.addClass( element, classname )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.addClass( classname )</code></p>
+
+
+<div class="pilwrap" id="removeclass">
+  <h3>
+    <a href="#removeclass" name="removeclass" class="pilcrow">&#182;</a>
+    <code>removeClass</code>
+  </h3>
+</div>
+
+
+<p>remove a css class</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_12">
+  <h4>
+    <a href="#examples%3A_12" name="examples%3A_12" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.removeClass( element, classname )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.removeClass( classname )</code></p>
+
+
+<div class="pilwrap" id="hide">
+  <h3>
+    <a href="#hide" name="hide" class="pilcrow">&#182;</a>
+    <code>hide</code>
+  </h3>
+</div>
+
+
+<p>hide the element by setting <code>style="display:none"</code></p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_13">
+  <h4>
+    <a href="#examples%3A_13" name="examples%3A_13" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.hide( el )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.hide()</code></p>
+
+
+<div class="pilwrap" id="show">
+  <h3>
+    <a href="#show" name="show" class="pilcrow">&#182;</a>
+    <code>show</code>
+  </h3>
+</div>
+
+
+<p>show the element by setting <code>style="display:{display}"</code></p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_14">
+  <h4>
+    <a href="#examples%3A_14" name="examples%3A_14" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.show( el [, display = "block"] )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.show( [display = "block"] )</code></p>
+
+
+<div class="pilwrap" id="hasid">
+  <h3>
+    <a href="#hasid" name="hasid" class="pilcrow">&#182;</a>
+    <code>hasId</code>
+  </h3>
+</div>
+
+
+<p>check if the element.id matches the given id</p>
+
+<p><strong>Returns:</strong> <em>(Boolean)</em> The id matches the given id</p>
+
+
+<div class="pilwrap" id="examples%3A_15">
+  <h4>
+    <a href="#examples%3A_15" name="examples%3A_15" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.hasId( el, id )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.hasId( id )</code></p>
+
+
+<div class="pilwrap" id="append">
+  <h3>
+    <a href="#append" name="append" class="pilcrow">&#182;</a>
+    <code>append</code>
+  </h3>
+</div>
+
+
+<p>Append html to a element</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_16">
+  <h4>
+    <a href="#examples%3A_16" name="examples%3A_16" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.append( el, html )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.append( html )</code></p>
+
+
+<div class="pilwrap" id="prepend">
+  <h3>
+    <a href="#prepend" name="prepend" class="pilcrow">&#182;</a>
+    <code>prepend</code>
+  </h3>
+</div>
+
+
+<p>Prepend html to a element</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the element for chaining</p>
+
+
+<div class="pilwrap" id="examples%3A_17">
+  <h4>
+    <a href="#examples%3A_17" name="examples%3A_17" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.prepend( el, html )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.prepend( html )</code></p>
+
+
+<div class="pilwrap" id="remove">
+  <h3>
+    <a href="#remove" name="remove" class="pilcrow">&#182;</a>
+    <code>remove</code>
+  </h3>
+</div>
+
+
+<p>Remove the element from the dom</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the removed element</p>
+
+
+<div class="pilwrap" id="examples%3A_18">
+  <h4>
+    <a href="#examples%3A_18" name="examples%3A_18" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.remove( el )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.remove()</code></p>
+
+
+<div class="pilwrap" id="on">
+  <h3>
+    <a href="#on" name="on" class="pilcrow">&#182;</a>
+    <code>on</code>
+  </h3>
+</div>
+
+
+<p>listen to a dom event.</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the removed element</p>
+
+
+<div class="pilwrap" id="examples%3A_19">
+  <h4>
+    <a href="#examples%3A_19" name="examples%3A_19" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.on( el, type, handler )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.on( type, handler )</code></p>
+
+
+<div class="pilwrap" id="off">
+  <h3>
+    <a href="#off" name="off" class="pilcrow">&#182;</a>
+    <code>off</code>
+  </h3>
+</div>
+
+
+<p>remove to dom event listener.</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the removed element</p>
+
+
+<div class="pilwrap" id="examples%3A_20">
+  <h4>
+    <a href="#examples%3A_20" name="examples%3A_20" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.off( el, type, handler )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.off( type, handler )</code></p>
+
+
+<div class="pilwrap" id="emit">
+  <h3>
+    <a href="#emit" name="emit" class="pilcrow">&#182;</a>
+    <code>emit</code>
+  </h3>
+</div>
+
+
+<p>emit an event manually</p>
+
+<p><strong>Returns:</strong> <em>(Element)</em> Returns the removed element</p>
+
+
+<div class="pilwrap" id="examples%3A_21">
+  <h4>
+    <a href="#examples%3A_21" name="examples%3A_21" class="pilcrow">&#182;</a>
+    Examples:
+  </h4>
+</div>
+
+
+<p><em>direct usage</em>:</p>
+
+<p><code>domel.emit( el, type )</code></p>
+
+<p><em>wrapped usage by <code>.d</code></em>:</p>
+
+<p><code>el.d.emit( type )</code></p>
+
+
+<div class="pilwrap" id="todo">
+  <h2>
+    <a href="#todo" name="todo" class="pilcrow">&#182;</a>
+    TODO
+  </h2>
+</div>
+
+
+<ul>
+<li>Test script</li>
+<li>Better docs ;-)</li>
+<li>IE Tests and Shims</li>
+</ul>
+
+
+<div class="pilwrap" id="release%20history">
+  <h2>
+    <a href="#release%20history" name="release%20history" class="pilcrow">&#182;</a>
+    Release History
+  </h2>
+</div>
+
+
+<p>|Version|Date|Description|
+|:--:|:--:|:--|
+|0.0.1|2015-9-16|Initial commit|</p>
+
+<p><a href="https://nodei.co/npm/domel/"><img src="https://nodei.co/npm-dl/domel.png?months=6" alt="NPM" title="" /></a></p>
+
+<blockquote>
+  <p>Initially Generated with <a href="https://github.com/mpneuried/generator-mpnodemodule">generator-mpnodemodule</a></p>
+</blockquote>
+
+
+<div class="pilwrap" id="the%20mit%20license%20(mit)">
+  <h2>
+    <a href="#the%20mit%20license%20(mit)" name="the%20mit%20license%20(mit)" class="pilcrow">&#182;</a>
+    The MIT License (MIT)
+  </h2>
+</div>
+
+
+<p>Copyright © 2015 M. Peter, <a href='http://www.tcs.de'>http://www.tcs.de</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></div>
+  </div>
+</body>
+</html>

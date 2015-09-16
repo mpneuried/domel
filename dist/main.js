@@ -364,11 +364,9 @@
     return evt;
   };
 
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = domHelper;
-      return;
-    }
+  if (typeof module !== 'undefined' && module.exports) {
+    exports = module.exports = domHelper;
+  } else if (typeof exports !== 'undefined') {
     exports.domHelper = domHelper;
   } else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
     define(function() {
