@@ -1,14 +1,3 @@
-root = @
-# http://www.sitepoint.com/jquery-vs-raw-javascript-1-dom-forms/
-# https://gist.github.com/liamcurry/2597326
-# https://gist.github.com/harmstyler/7468978
-
-###
-	
-	Extend natives
-
-###
-
 isString = ( vr )->
 	return typeof vr is 'string' or vr instanceof String
 
@@ -64,6 +53,11 @@ domHelper.create = ( tag="DIV", attributes={} )->
 	return addD( _el )
 
 domHelper.data = ( el, key, val )->
+	if not el?.dataset?
+		if val?
+			return
+		return addD( el )
+			
 	if key? and val?
 		el.dataset[ key ] = val
 	else if key?

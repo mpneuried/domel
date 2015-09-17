@@ -1,5 +1,5 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.domel = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var addD, addDWrap, domHelper, exports, nonAutoAttach, root,
+var addD, addDWrap, domHelper, isString, nonAutoAttach, root,
   slice = [].slice,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
@@ -11,7 +11,11 @@ root = this;
 	Extend natives
  */
 
-nonAutoAttach = ["byClass", "byId"];
+isString = function(vr) {
+  return typeof vr === 'string' || vr instanceof String;
+};
+
+nonAutoAttach = ["domel", "create", "byClass", "byId"];
 
 addDWrap = function(fn, el, elIdx) {
   if (elIdx == null) {
@@ -99,15 +103,48 @@ domHelper = function(sel, context, onlyFirst) {
 
 domHelper.domel = function(el) {
   if (el != null) {
-    return el.dataset[key];
+    return addD(el);
   }
 };
 
-domHelper.data = function(el, key) {
-  if (key != null) {
+domHelper.create = function(tag, attributes) {
+  var _el, _k, _v;
+  if (tag == null) {
+    tag = "DIV";
+  }
+  if (attributes == null) {
+    attributes = {};
+  }
+  _el = document.createElement(tag);
+  for (_k in attributes) {
+    _v = attributes[_k];
+    _el.setAttribute(_k, _v);
+  }
+  return addD(_el);
+};
+
+domHelper.data = function(el, key, val) {
+  if ((el != null ? el.dataset : void 0) == null) {
+    if (val != null) {
+      return;
+    }
+    return addD(el);
+  }
+  if ((key != null) && (val != null)) {
+    el.dataset[key] = val;
+  } else if (key != null) {
     return el.dataset[key];
   }
   return el.dataset;
+};
+
+domHelper.attr = function(el, key, val) {
+  if ((key != null) && (val != null)) {
+    el.setAttribute(key, val);
+  } else if (key != null) {
+    el.getAttribute(key);
+  }
+  return el;
 };
 
 domHelper.byClass = function(_cl, context, onlyFirst) {
@@ -259,7 +296,7 @@ domHelper.addClass = function(element, classname) {
     return;
   }
   element.className += " " + classname;
-  return element;
+  return addD(element);
 };
 
 domHelper.removeClass = function(element, classname) {
@@ -271,7 +308,7 @@ domHelper.removeClass = function(element, classname) {
   rxp = new RegExp("\\s?\\b" + classname + "\\b", "g");
   _classnames = _classnames.replace(rxp, "");
   element.className = _classnames;
-  return element;
+  return addD(element);
 };
 
 domHelper.hasId = function(el, id) {
@@ -282,17 +319,26 @@ domHelper.hasId = function(el, id) {
 };
 
 domHelper.append = function(el, html) {
-  var _hdiv, child, j, len, ref;
-  _hdiv = document.createElement('div');
-  _hdiv.innerHTML = html;
-  ref = _hdiv.childNodes;
-  for (j = 0, len = ref.length; j < len; j++) {
-    child = ref[j];
-    if ((child != null ? child.tagName : void 0) != null) {
+  var _hdiv, child, j, k, len, len1, ref;
+  if (isString(html)) {
+    _hdiv = document.createElement('div');
+    _hdiv.innerHTML = html;
+    ref = _hdiv.childNodes;
+    for (j = 0, len = ref.length; j < len; j++) {
+      child = ref[j];
+      if ((child != null ? child.tagName : void 0) != null) {
+        el.appendChild(child);
+      }
+    }
+  } else if (html instanceof HTMLCollection) {
+    for (k = 0, len1 = html.length; k < len1; k++) {
+      child = html[k];
       el.appendChild(child);
     }
+  } else if (html instanceof Element) {
+    el.appendChild(html);
   }
-  return el;
+  return addD(el);
 };
 
 domHelper.prepend = function(el, html) {
@@ -334,6 +380,15 @@ domHelper.remove = function(el) {
   return el;
 };
 
+domHelper.replaceWith = function(el, elToRepl) {
+  domHelper.parent(el).replaceChild(elToRepl, el);
+  return el;
+};
+
+domHelper.clone = function(el) {
+  return addD(el.cloneNode(true));
+};
+
 domHelper.on = function(el, type, handler) {
   if (el == null) {
     return;
@@ -370,18 +425,7 @@ domHelper.emit = function(el, type) {
   return evt;
 };
 
-if (typeof module !== 'undefined' && module.exports) {
-  exports = module.exports = domHelper;
-} else if (typeof exports !== 'undefined') {
-  exports.domHelper = domHelper;
-} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-  define(function() {
-    return domHelper;
-  });
-  return;
-} else {
-  root.domHelper = domHelper;
-}
+module.exports = domHelper;
 
 
 },{}]},{},[1])(1)

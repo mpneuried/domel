@@ -519,11 +519,16 @@ add the `.d` helper to an element
 `domel.domel( el )`
 
 
+## Resources
 
+- [**Article:** Native JavaScript Equivalents of jQuery Methods: the DOM and Forms](http://www.sitepoint.com/jquery-vs-raw-javascript-1-dom-forms/)
+- [**Gist:** Moving from jQuery](https://gist.github.com/liamcurry/2597326)
+- [**Gist:** Moving from jQuery *(fork)*](https://gist.github.com/harmstyler/7468978)
 
 ## TODO
 
 - Test script
+- Automated Cross Browser tests
 - Better docs ;-)
 - IE Tests and Shims
 
