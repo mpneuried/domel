@@ -9,7 +9,10 @@ root = @
 
 ###
 
-nonAutoAttach = [ "byClass", "byId" ]
+isString = ( vr )->
+	return typeof vr is 'string' or vr instanceof String
+
+nonAutoAttach = [ "domel", "create", "byClass", "byId" ]
 addDWrap = ( fn, el, elIdx = 0 )->
 	return ( args... )->
 		args.splice( elIdx, 0, el )
@@ -49,11 +52,31 @@ domHelper = ( sel, context = document, onlyFirst = false )->
 		return addD( _results?[0] )
 	return ( addD( _el ) for _el in _results )
 
-domHelper.data = ( el, key )->
-	if key?
+domHelper.domel = ( el )->
+	if el?
+		return addD( el )
+	return
+	
+domHelper.create = ( tag="DIV", attributes={} )->
+	_el = document.createElement(tag)
+	for _k, _v of attributes
+		_el.setAttribute(_k, _v)
+	return addD( _el )
+
+domHelper.data = ( el, key, val )->
+	if key? and val?
+		el.dataset[ key ] = val
+	else if key?
 		return el.dataset[ key ]
 	return el.dataset
-	
+
+domHelper.attr = ( el, key, val )->
+	if key? and val?
+		el.setAttribute(key, val)
+	else if key?
+		el.getAttribute(key)
+	return el
+
 domHelper.byClass = ( _cl, context = document, onlyFirst = false )->
 	# remove possible leading dot
 	if _cl[0] is "."
@@ -154,7 +177,7 @@ domHelper.addClass = ( element, classname )->
 
 	# If there are more classes prepend with an empty space
 	element.className +=  " #{ classname }"
-	return element
+	return addD( element )
 
 
 domHelper.removeClass = ( element, classname ) ->
@@ -174,7 +197,7 @@ domHelper.removeClass = ( element, classname ) ->
 
 	# Save this to element
 	element.className = _classnames
-	return element
+	return addD( element )
 
 domHelper.hasId = ( el, id )->
 	if el?.id is id
@@ -182,11 +205,17 @@ domHelper.hasId = ( el, id )->
 	return false
 
 domHelper.append = ( el, html )->
-	_hdiv = document.createElement('div')
-	_hdiv.innerHTML = html
-	for child in _hdiv.childNodes when child?.tagName?
-		el.appendChild( child )
-	return el
+	if isString( html )
+		_hdiv = document.createElement('div')
+		_hdiv.innerHTML = html
+		for child in _hdiv.childNodes when child?.tagName?
+			el.appendChild( child )
+	else if html instanceof HTMLCollection
+		for child in html
+			el.appendChild( child )
+	else if html instanceof Element
+		el.appendChild( html )
+	return addD( el )
 	
 domHelper.prepend = ( el, html )->
 	
@@ -217,6 +246,13 @@ domHelper.remove = ( el )->
 			i--
 	return el
 	
+domHelper.replaceWith = ( el, elToRepl )->
+	domHelper.parent( el ).replaceChild( elToRepl, el )
+	return el
+	
+domHelper.clone = ( el )->
+	return addD( el.cloneNode( true ) )
+
 domHelper.on = ( el, type, handler )->
 	if not el?
 		return
@@ -245,14 +281,4 @@ domHelper.emit = ( el, type )->
 	el.dispatchEvent(evt)
 	return evt
 
-# Export the module
-if typeof module isnt 'undefined' and module.exports
-	exports = module.exports = domHelper
-else if typeof exports isnt 'undefined'
-	exports.domHelper = domHelper
-else if typeof define is 'function' and typeof define.amd is 'object' and define.amd
-	define ->
-		return domHelper
-	return
-else
-	root.domHelper = domHelper
+module.exports = domHelper

@@ -1,6 +1,6 @@
 {
   "name": "domel",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A simple dom helper if you want to get rid of jQuery",
   "keywords": [ "dom", "browser", "helper", "jquery", "selector", "traversing" ],
   "homepage": "https://github.com/mpneuried/domel",
@@ -25,13 +25,13 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "0.4.x",
+    "coffeeify": "^1.1.0",
+    "grunt-browserify": "^4.0.1",
     "grunt-contrib-clean": "0.x",
-    "grunt-contrib-coffee": "0.x",
     "grunt-contrib-copy": "0.x",
     "grunt-contrib-uglify": "0.x",
     "grunt-docker": "0.0.x",
     "grunt-mocha-cli": "1.x",
-    "grunt-regarde": "0.x",
     "should": "7.x"
   }
 }

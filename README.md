@@ -36,7 +36,8 @@ myEl.d.addClass( "foo" ).d.show()
 ## Methods
 
 This module will add a `d` property to every retuned dom element.
-So you can use at least every **domel** function without adding the element `el.d.{function}()`
+So you can use at least every **domel** function without adding the element `el.d.{function}()`.
+You can even just add this helper by calling `domel.domel( el )`.
 
 ### selector / `find`
 
@@ -94,21 +95,53 @@ get an element by id
 
 
 
-### `data`
+### `create`
 
-get the data attributes of an element
+create a new dom element
 
-**Returns:** *(Strin|Object)* Returns elements data as object of the value if a `key` was defined.
+**Returns:** *(Element)* the new created element
 
 #### Examples:
 
 *direct usage*:
 
-`domel.data( el, key )`
+`domel.create( [tag="DIV"][, attributes={} ] )`
+
+
+
+### `attr`
+
+get or set attributes of an element
+
+**Returns:** *(String|Element)* Returns the attribute if no `setVal` was defined. Otherwise the element self for chaining.
+
+#### Examples:
+
+*direct usage*:
+
+`domel.attr( el, key [, setVal ] )`
 
 *wrapped usage by `.d`*:
 
-`el.d.data( key )`
+`el.d.attr( key [, setVal ] )`
+
+
+
+### `data`
+
+get the data attributes of an element
+
+**Returns:** *(String|Object|Element)* Returns elements data as object of the value if a `key` was defined and no `setVal` was defined. If the `key` and `setVal` are defined the  the element self will be returned for chaining.
+
+#### Examples:
+
+*direct usage*:
+
+`domel.data( el, key [, setVal ] )`
+
+*wrapped usage by `.d`*:
+
+`el.d.data( key [, setVal ] )`
 
 
 
@@ -382,6 +415,43 @@ Remove the element from the dom
 
 
 
+### `replaceWith`
+
+replace an element with another
+
+**Returns:** *(Element)* Returns the replaced element
+
+#### Examples:
+
+*direct usage*:
+
+`domel.replaceWith( el, newEl )`
+
+*wrapped usage by `.d`*:
+
+`el.d.replaceWith( newEl )`
+
+
+
+### `clone`
+
+deep clone a element
+
+**Returns:** *(Element)* Returns the cloned node
+
+#### Examples:
+
+*direct usage*:
+
+`domel.clone( el )`
+
+*wrapped usage by `.d`*:
+
+`el.d.clone()`
+
+
+
+
 ### `on`
 
 listen to a dom event.
@@ -435,6 +505,22 @@ emit an event manually
 `el.d.emit( type )`
 
 
+
+### `domel`
+
+add the `.d` helper to an element
+
+**Returns:** *(Element)* Returns extended object
+
+#### Examples:
+
+*direct usage*:
+
+`domel.domel( el )`
+
+
+
+
 ## TODO
 
 - Test script
@@ -444,6 +530,8 @@ emit an event manually
 ## Release History
 |Version|Date|Description|
 |:--:|:--:|:--|
+|0.1.0|2015-9-17|bugfixes; added methods: `domel`, `create`, `attr`, `replaceWith`, `clone`; Changed compiler to browserify + coffeeify|
+|0.0.2|2015-9-16|export fix|
 |0.0.1|2015-9-16|Initial commit|
 
 [![NPM](https://nodei.co/npm-dl/domel.png?months=6)](https://nodei.co/npm/domel/)
