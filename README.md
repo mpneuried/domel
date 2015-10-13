@@ -35,6 +35,34 @@ myEl.d.addClass( "foo" ).d.show()
 
 ## Methods
 
+- [selector / find](#selector--find)
+- [byClass](#byclass)
+- [byId](#byid)
+- [create](#create)
+- [attr](#attr)
+- [data](#data)
+- [last](#last)
+- [first](#first)
+- [parent](#parent)
+- [children](#children)
+- [countChildren](#countchildren)
+- [is](#is)
+- [hasClass](#hasclass)
+- [addClass](#addclass)
+- [removeClass](#removeclass)
+- [hide](#hide)
+- [show](#show)
+- [hasId](#hasid)
+- [append](#append)
+- [prepend](#prepend)
+- [remove](#remove)
+- [replaceWith](#replacewith)
+- [clone](#clone)
+- [on](#on)
+- [off](#off)
+- [emit](#emit)
+- [domel](#domel-1)
+
 This module will add a `d` property to every retuned dom element.
 So you can use at least every **domel** function without adding the element `el.d.{function}()`.
 You can even just add this helper by calling `domel.domel( el )`.
